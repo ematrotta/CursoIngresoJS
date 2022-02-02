@@ -8,7 +8,7 @@ function FahrenheitCentigrados ()
     var faren;
 
     faren = parseInt(document.getElementById("txtIdTemperatura").value);
-    centigrados = (faren - 32) * 5/9;
+    centigrados = parseInt((faren - 32) * 5/9);
 
     alert(faren + " °F es igual a " + centigrados + " °C");
 	
@@ -20,7 +20,7 @@ function CentigradosFahrenheit ()
     var faren;
 
     centigrados = parseInt(document.getElementById("txtIdTemperatura").value);
-    faren = (centigrados *9/5) + 32;
+    faren = parseInt((centigrados *9/5) + 32);
 
     alert(centigrados + " °C es igual a " + faren + " °F");
 	

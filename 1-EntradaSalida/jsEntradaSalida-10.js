@@ -13,3 +13,17 @@ function mostrarAumento()
 	
 	document.getElementById("txtIdResultado").value = desc;
 }
+/*EJERCICIO 10 BIS
+
+
+var importe;
+var desc;
+var procentaje;
+
+importe = parseInt(document.getElementById("txtIdImporte").value);
+procentaje = parseInt(prompt("Ingrese el porcentaje"));
+desc = importe * (1-procentaje/100) ;
+
+document.getElementById("txtIdResultado").value = desc;
+
+*/
