@@ -14,6 +14,7 @@ function Sumar ()
 	nroDos = parseInt(document.getElementById("txtIdPrecioDos").value);
     nroTres = parseInt(document.getElementById("txtIdPrecioTres").value);
     resultado = nroUno + nroDos + nroTres;
+    resultado = parseInt(resultado);
 
     alert("El resultado de la suma es: " + resultado);
 
@@ -31,6 +32,7 @@ function Promedio ()
 	nroDos = parseInt(document.getElementById("txtIdPrecioDos").value);
     nroTres = parseInt(document.getElementById("txtIdPrecioTres").value);
     resultado = (nroUno + nroDos + nroTres)/3;
+    resultado = parseInt(resultado);
 
     alert("El promedio es: " + resultado);
 	
@@ -46,6 +48,7 @@ function PrecioFinal ()
 	nroDos = parseInt(document.getElementById("txtIdPrecioDos").value);
     nroTres = parseInt(document.getElementById("txtIdPrecioTres").value);
     resultado = (nroUno + nroDos + nroTres)*1.21;
+    resultado = parseInt(resultado);
 
     alert("El precio final es: " + resultado);
 	
