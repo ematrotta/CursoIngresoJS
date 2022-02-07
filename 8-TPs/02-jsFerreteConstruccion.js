@@ -12,9 +12,9 @@ function Rectangulo ()
 
     largo = parseInt(document.getElementById("txtIdLargo").value);
     ancho = parseInt(document.getElementById("txtIdAncho").value);
-    perimetro = parseInt((largo*2 + ancho*2)*3);
+    perimetro = (largo*2 + ancho*2)*3;
 
-    alert("La cantidad de alambre a comprar es: " + perimetro);
+    alert("La cantidad de alambre a comprar es: " + perimetro + "m");
 
 }
 function Circulo () 
