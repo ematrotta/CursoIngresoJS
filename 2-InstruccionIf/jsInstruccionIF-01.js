@@ -10,3 +10,18 @@ function mostrar()
 	}
 
 }//FIN DE LA FUNCIÓN
+
+//Operadres de comparacion
+// == comparacion valor
+// === compraracion estricta valor y tipo de dato
+// <
+// >
+// <=
+// >=
+// != (distinto)
+// !== distinto estricto
+
+// Operadores logicos
+// && AND
+// || OR
+// ! NOT, de negacion
