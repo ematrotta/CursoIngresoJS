@@ -4,7 +4,7 @@ function mostrar()
 	var nota;
 	var mensaje;
 
-	nota = parseInt(Math.random()*10+1);
+	nota = Math.round(Math.random()*10+1);
 
 	if (nota == 9 || nota == 10)
 	{
