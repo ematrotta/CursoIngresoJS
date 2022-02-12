@@ -9,6 +9,7 @@ de no ser igual se debe informar si “falta…”  para llegar al número secre
 */
 var numeroSecreto; 
 var contadorIntentos;
+//Prueba
 
 function comenzar()
 {
