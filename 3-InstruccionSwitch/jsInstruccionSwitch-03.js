@@ -14,8 +14,6 @@ function mostrar()
 			break;
 	}
 	alert(mensaje);
-	//Nuevo Cambio
-	
 	
 
 
