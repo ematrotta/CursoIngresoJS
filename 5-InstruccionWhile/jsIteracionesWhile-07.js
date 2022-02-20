@@ -34,6 +34,8 @@ function mostrar()
 	var contadorMujeresAltura;
 	var nombreDeLaPersonaMasAlta;
 	var alturaMaxima;
+	var primerPersonaConFiebre;
+	var edadPrimeraPersonaConFiebre;
 
 	//CONTADORES
 	contadorIteraciones = 0;
@@ -120,7 +122,12 @@ function mostrar()
 		}
 
 		//PIDO NOMBRE DEL ALUMNO
-		nombreAlumno = prompt(contadorIteraciones + " - Ingrese el nombre");
+		nombreAlumno = prompt(contadorIteraciones + " - Ingrese el nombre").toString();
+		while(nombreAlumno == "")
+		{
+			mensaje = " - Ingrese un nombre correcto";
+			nombreAlumno = prompt(contadorIteraciones + mensaje).toString();
+		}
 
 		//SUMO LAS ALTURAS
 		sumaAlturas = sumaAlturas + alturaEnCm;
@@ -131,14 +138,23 @@ function mostrar()
 			alturaMaxima = alturaEnCm;
 			nombreDeLaPersonaMasAlta = nombreAlumno;
 		}
-		//NOMBRE DE LA 1ER PERSONA CON FIEBRE
+		//EDAD DE LA 1ER PERSONA CON FIEBRE NO ME SALE!!!!
+		if(temperatura > 37)
+		{
+			while(primerPersonaConFiebre = true)
+			{
+				edadPrimeraPersonaConFiebre = edad;
+			}
+			primerPersonaConFiebre = false;
+		}
+
 
 	}
 
 	//1RA PARTE
 
 	promedioAltura = (sumaAlturas / contadorIteraciones).toFixed(2);
-	alert(promedioAltura); //a)
+	alert("El promedio de las alturas es " + promedioAltura); //a)
 	alert("Hay " + contadorSexoF + " F, " + contadorSexoM + " M, " + contadorSexoNb + " NB."); //b)
 	alert("Hay " + contadorNotaAprobados + " aprobados."); //c)
 	alert("Hay " + contadorMujeresAltura + " muejeres que superan los 190 cm"); //d)
@@ -167,6 +183,7 @@ function mostrar()
 	alert("El nombre de la persona más alta es "+ nombreDeLaPersonaMasAlta);
 
 	//g) Nombre de la 1er persona con fiebre
+	alert("La edad de la 1er persona con fiebre es: " + edadPrimeraPersonaConFiebre);
 
 
 
