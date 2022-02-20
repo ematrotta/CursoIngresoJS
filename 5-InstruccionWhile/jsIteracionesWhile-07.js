@@ -48,6 +48,7 @@ function mostrar()
 
 	//OTRAS VARIABLES
 	alturaMaxima = 0;
+	primerPersonaConFiebre = true;
 
 
 	while(contadorIteraciones < 5)
@@ -141,11 +142,12 @@ function mostrar()
 		//EDAD DE LA 1ER PERSONA CON FIEBRE NO ME SALE!!!!
 		if(temperatura > 37)
 		{
-			while(primerPersonaConFiebre = true)
+			while(primerPersonaConFiebre)
 			{
 				edadPrimeraPersonaConFiebre = edad;
+				primerPersonaConFiebre = false;
 			}
-			primerPersonaConFiebre = false;
+
 		}
 
 
