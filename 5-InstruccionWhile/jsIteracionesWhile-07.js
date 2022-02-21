@@ -36,6 +36,11 @@ function mostrar()
 	var alturaMaxima;
 	var primerPersonaConFiebre;
 	var edadPrimeraPersonaConFiebre;
+	var primerMujerAprobada;
+	var nombreDeLaPrimerMujerAprobada;
+	var sumaAlturasAprobados;
+	var primerHombreMenorDesaprobado;
+	var nombrePrimerHombreMenorDesaprobado;
 
 	//CONTADORES
 	contadorIteraciones = 0;
@@ -45,13 +50,15 @@ function mostrar()
 	contadorSexoNb = 0;
 	contadorNotaAprobados = 0;
 	contadorMujeresAltura = 0;
+	sumaAlturasAprobados = 0;
 
 	//OTRAS VARIABLES
 	alturaMaxima = 0;
 	primerPersonaConFiebre = true;
+	primerMujerAprobada = true;
+	primerHombreMenorDesaprobado = true;
 
-
-	while(contadorIteraciones < 5)
+	while(contadorIteraciones < 3)
 	{
 		contadorIteraciones++;
 
@@ -116,18 +123,35 @@ function mostrar()
 			nota = parseInt(prompt(mensaje));
 		}
 
-		//CONTABILIZO CANTIDAD DE APROBADOS
-		if(nota > 6)
-		{
-			contadorNotaAprobados++;
-		}
-
 		//PIDO NOMBRE DEL ALUMNO
 		nombreAlumno = prompt(contadorIteraciones + " - Ingrese el nombre").toString();
 		while(nombreAlumno == "")
 		{
 			mensaje = " - Ingrese un nombre correcto";
 			nombreAlumno = prompt(contadorIteraciones + mensaje).toString();
+		}
+
+		//CONTABILIZO CANTIDAD DE APROBADOS
+		if(nota > 6)
+		{
+			contadorNotaAprobados++;
+			// NOMBRE DE LA 1ER MUJER APROBADA
+			if(sexo == "f" && primerMujerAprobada == true)
+			{
+				nombreDeLaPrimerMujerAprobada = nombreAlumno;
+				primerMujerAprobada = false;
+			}
+			//SUMA DE ALTURAS DE APROBADOS
+			sumaAlturasAprobados = sumaAlturasAprobados + alturaEnCm;
+		}
+		else
+		{
+			//BUSCO EL NOMBRE DEL 1ER HOMBRE DESAPROBADO Y QUE MIDE MENOS DE 160CM
+			if(sexo == "m" && primerHombreMenorDesaprobado == true && alturaEnCm < 160)
+			{
+				nombrePrimerHombreMenorDesaprobado = nombreAlumno;
+				primerHombreMenorDesaprobado = false;
+			}
 		}
 
 		//SUMO LAS ALTURAS
@@ -142,7 +166,7 @@ function mostrar()
 		//EDAD DE LA 1ER PERSONA CON FIEBRE NO ME SALE!!!!
 		if(temperatura > 37)
 		{
-			while(primerPersonaConFiebre)
+			while(primerPersonaConFiebre == true)
 			{
 				edadPrimeraPersonaConFiebre = edad;
 				primerPersonaConFiebre = false;
@@ -184,8 +208,34 @@ function mostrar()
 	// f) El nombre de la persona más alta
 	alert("El nombre de la persona más alta es "+ nombreDeLaPersonaMasAlta);
 
-	//g) Nombre de la 1er persona con fiebre
+	//g) Edad de la 1er persona con fiebre
 	alert("La edad de la 1er persona con fiebre es: " + edadPrimeraPersonaConFiebre);
+
+
+	//3RA PARTE
+
+	//h) Nombre de la 1er mujer aprobada
+	alert("La primer mujer aprobada es: " + nombreDeLaPrimerMujerAprobada);
+
+	//i) Altura promedio de los aprobados
+	alert("El promedio de altura de aprobados es: " + (sumaAlturasAprobados/contadorNotaAprobados).toFixed(2));
+
+	//j) Nombre del 1er hombre, que mide menos de 160 cm y está desaprobado.
+	alert("El nombre del 1er hombre desaprobado menor a 160 cm es: " + nombrePrimerHombreMenorDesaprobado);
+
+
+	//4TA PARTE
+
+	//k) El porcentaje de alumnos aprobados sobre el total de alumnos
+	alert("El porcentaje de alumnos aprobados sobre el total es : " + (contadorNotaAprobados / contadorIteraciones * 100).toFixed(0) + "%");
+	
+	//l) La nota y el nombre del primer varon más alto de 200cm
+	
+
+
+
+
+
 
 
 
