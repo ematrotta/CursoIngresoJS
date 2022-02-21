@@ -189,7 +189,7 @@ function mostrar()
 			contadorPersonasConFiebre++;
 
 			//EDAD DE LA 1ER PERSONA CON FIEBRE
-			while(primerPersonaConFiebre == true)
+			if(primerPersonaConFiebre == true)
 			{
 				edadPrimeraPersonaConFiebre = edad;
 				primerPersonaConFiebre = false;
