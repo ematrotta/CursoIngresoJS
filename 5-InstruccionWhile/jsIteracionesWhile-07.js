@@ -41,6 +41,11 @@ function mostrar()
 	var sumaAlturasAprobados;
 	var primerHombreMenorDesaprobado;
 	var nombrePrimerHombreMenorDesaprobado;
+	var primerHombreMasAltoDe200cm;
+	var nombrePrimerHombreMasAltoDe200cm;
+	var notaPrimerHombreMasAltoDe200cm;
+	var contadorPersonasConFiebre;
+	var contadorPersonasConFiebreMayorA50;
 
 	//CONTADORES
 	contadorIteraciones = 0;
@@ -51,14 +56,17 @@ function mostrar()
 	contadorNotaAprobados = 0;
 	contadorMujeresAltura = 0;
 	sumaAlturasAprobados = 0;
+	contadorPersonasConFiebre = 0;
+	contadorPersonasConFiebreMayorA50 = 0;
 
 	//OTRAS VARIABLES
 	alturaMaxima = 0;
 	primerPersonaConFiebre = true;
 	primerMujerAprobada = true;
 	primerHombreMenorDesaprobado = true;
+	primerHombreMasAltoDe200cm = true;
 
-	while(contadorIteraciones < 3)
+	while(contadorIteraciones < 5)
 	{
 		contadorIteraciones++;
 
@@ -154,6 +162,17 @@ function mostrar()
 			}
 		}
 
+		// OBTENGO EL NOMBRE Y LA NOTA DEL HOMBRE MÁS ALTO DE 200
+		if(sexo == "m" && alturaEnCm > 200)
+		{
+			if(primerHombreMasAltoDe200cm == true)
+			{
+				nombrePrimerHombreMasAltoDe200cm = nombreAlumno;
+				notaPrimerHombreMasAltoDe200cm = nota;
+				primerHombreMasAltoDe200cm = false;
+			}
+		}
+
 		//SUMO LAS ALTURAS
 		sumaAlturas = sumaAlturas + alturaEnCm;
 
@@ -163,13 +182,22 @@ function mostrar()
 			alturaMaxima = alturaEnCm;
 			nombreDeLaPersonaMasAlta = nombreAlumno;
 		}
-		//EDAD DE LA 1ER PERSONA CON FIEBRE NO ME SALE!!!!
+		
 		if(temperatura > 37)
 		{
+			//CONTABILIZO CUANTAS PERSONAS HAY CON FIEBRE
+			contadorPersonasConFiebre++;
+
+			//EDAD DE LA 1ER PERSONA CON FIEBRE
 			while(primerPersonaConFiebre == true)
 			{
 				edadPrimeraPersonaConFiebre = edad;
 				primerPersonaConFiebre = false;
+			}
+
+			if(edad > 50)
+			{
+				contadorPersonasConFiebreMayorA50++;
 			}
 
 		}
@@ -230,7 +258,10 @@ function mostrar()
 	alert("El porcentaje de alumnos aprobados sobre el total es : " + (contadorNotaAprobados / contadorIteraciones * 100).toFixed(0) + "%");
 	
 	//l) La nota y el nombre del primer varon más alto de 200cm
-	
+	alert("El nombre del hombre más alto de 200 cm es: " + nombrePrimerHombreMenorDesaprobado + " y su nota es: " + notaPrimerHombreMasAltoDe200cm);
+
+	//m) Porcentahe de personas con fiebre mayores a 50 años sobre el total de personas con fiebre y sobre el total de alumnos
+	alert("Hay un " + (contadorPersonasConFiebreMayorA50 / contadorPersonasConFiebre *100).toFixed(0) + "% de personas con fiebre mayores a 50 años sobre la cantidad de personas con fiebre y un " + (contadorPersonasConFiebreMayorA50 / contadorIteraciones *100).toFixed(0) + "% sobre el total de alumnos");
 
 
 
