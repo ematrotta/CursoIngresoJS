@@ -58,7 +58,7 @@ function mostrar()
 			}
 		}
 
-		// SEPARO NÚMEROS PARES
+		// CONTABILIZO NÚMEROS PARES
 		if(numero % 2 == 0)
 		{
 			cantidadNumerosPares++;
