@@ -7,9 +7,11 @@ function mostrar()
 	var sumaPositivos;
 	var multiplicadornegativos;
 	var numero;
+	var banderaNegativos;
 
 	sumaPositivos = 0;
 	multiplicadornegativos = 1;
+	banderaNegativos = false;
 
 	do
 	{
@@ -20,12 +22,17 @@ function mostrar()
 		}
 		else
 		{
+			banderaNegativos = true;
 			multiplicadornegativos = multiplicadornegativos * numero;
 		}
-		respuesta = prompt("Si desea salir coloque: Salir");
-		respuesta.toLowerCase();
+		respuesta = prompt("Si desea salir coloque: Salir").toLowerCase();
 
 	}while(respuesta != "salir");
+
+	if(banderaNegativos == false)
+	{
+		multiplicadornegativos = 0;
+	}
 
 	document.getElementById("txtIdSuma").value = sumaPositivos;
 	document.getElementById("txtIdProducto").value = multiplicadornegativos;
