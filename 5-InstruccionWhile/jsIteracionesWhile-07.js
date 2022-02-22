@@ -4,19 +4,35 @@ e informar la suma acumulada y el promedio.
 */
 function mostrar()
 {
-	/* EJERCICIO BIEN HECHO
 	var contador;
-	var acumulador;
+	var suma;
+	var numero;
+	var promedio;
 	var respuesta;
-	contador=0;
-	acumulador=0;
-	respuesta='si';
+
+	suma = 0;
+	contador = 0;
+
+	do
+	{
+		numero = parseInt(prompt("Ingrese un Número"));
+		suma = suma + numero;
+		respuesta = prompt("Desea salir?, responda Salir");
+		contador++;
+	}while(respuesta != "Salir");
+
+	document.getElementById("txtIdSuma").value = suma;
+	promedio = (suma / contador).toFixed(0);
+	document.getElementById("txtIdPromedio").value = promedio;
 
 
-	txtIdSuma.value=acumulador;
-	txtIdPromedio.value=acumulador/contador;
-	*/
 
+
+
+
+
+	// EJERCICIO SABADO 19-02 
+	/*
 	var alturaEnCm;
 	var edad;
 	var temperatura;
@@ -264,7 +280,7 @@ function mostrar()
 	alert("Hay un " + (contadorPersonasConFiebreMayorA50 / contadorPersonasConFiebre *100).toFixed(0) + "% de personas con fiebre mayores a 50 años sobre la cantidad de personas con fiebre y un " + (contadorPersonasConFiebreMayorA50 / contadorIteraciones *100).toFixed(0) + "% sobre el total de alumnos");
 
 
-
+*/
 
 
 
