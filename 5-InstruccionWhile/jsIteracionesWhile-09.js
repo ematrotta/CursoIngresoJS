@@ -7,25 +7,26 @@ function mostrar()
 	var maxNumeroIngresado;
 	var minNumeroIngresado;
 	var respuesta;
+	var flag;
 
-	maxNumeroIngresado = 0;
-	minNumeroIngresado = 0;
+	flag = true;
 
 	do
 	{
 		numeroIngresado = parseInt(prompt("Ingrese un número"));
-		if(numeroIngresado > maxNumeroIngresado)
+
+		if(numeroIngresado > maxNumeroIngresado || flag == true)
 		{
 			maxNumeroIngresado = numeroIngresado;
+	
 		}
-		else
+		if(numeroIngresado < minNumeroIngresado || flag == true)
 		{
-			if(numeroIngresado < minNumeroIngresado)
-			{
-				minNumeroIngresado = numeroIngresado
-			}
+			minNumeroIngresado = numeroIngresado
 		}
 		respuesta = prompt("Si desea salir coloque la letra: S").toLowerCase();
+
+		flag = false;
 
 	}while(respuesta != "s");
 
