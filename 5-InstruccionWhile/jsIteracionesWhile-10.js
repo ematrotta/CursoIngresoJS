@@ -90,35 +90,11 @@ function mostrar()
 	//CALCULO DE DIFERENCIA DE POSITIVOS VS NEGATIVOS
 	diferenciaPositivosYNegativos = sumaPositivos + sumaNegativos;
 
-
-	//1 - SUMA DE LOS NEGATIVOS
-	alert("La suma de los números negativos es: "+ sumaNegativos);
-	
-	//2 - SUMA DE LOS POSITIVOS
-	alert("La suma de los números positivos es: "+ sumaPositivos);
-
-	//3 - CANTIDAD DE NEGATIVOS
-	alert("La cantidad de Números negativos es: "+ cantidadNegativos);
-
-	//4 - CANTIDAD DE POSITIVOS
-	alert("La cantidad de números positivos es: "+ cantidadPositivos);
-
-	//5 - CANTIDAD DE CEROS
-	alert("La cantidad de números ceros es: "+ cantidadCeros);
-
-	//6 - CANTIDAD DE NÚMEROS PARES
-	alert("La cantidad de números pares es: " + cantidadNumerosPares);
-
-	//7 - PROMEDIO DE POSITIVOS
-	alert(mensajePromedioCantidadPositivos);
-
-	//8 - PROMEDIO DE NEGATIVOS
-	alert(mensajePromedioCantidadNegativos);
-
-	//9 - DIFERENCIA ENTRE POSITIVOS Y NEGATIVOS
-	alert("La diferencia entre números positivos y negativos es "+ diferenciaPositivosYNegativos);
-
-
+	document.write("La suma de los números negativos es: "+ sumaNegativos + "<br>" + "La suma de los números positivos es: "+ sumaPositivos + "<br>" +
+	"La cantidad de Números negativos es: "+ cantidadNegativos + "<br>" + "La cantidad de números positivos es: "+ cantidadPositivos + "<br>" + 
+	"La cantidad de números ceros es: "+ cantidadCeros + "<br>" + "La cantidad de números pares es: " + cantidadNumerosPares + "<br>" +
+	"La cantidad de números pares es: " + cantidadNumerosPares + "<br>" + mensajePromedioCantidadPositivos + "<br>" + 
+	mensajePromedioCantidadNegativos + "<br>" + "La diferencia entre números positivos y negativos es "+ diferenciaPositivosYNegativos);
 
 
 }//FIN DE LA FUNCIÓN
