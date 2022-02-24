@@ -78,10 +78,10 @@ function mostrar()
   //DESCUENTO POR CANTIDAD DE BOLSAS
   switch(contadorBolsasTotal)
   {
-    case contadorBolsas > 10:
+    case contadorBolsasTotal > 10:
       descuento = 15;
       break;
-    case contadorBolsas > 30:
+    case contadorBolsasTotal > 30:
       descuento = 25;
       break;
     default:
