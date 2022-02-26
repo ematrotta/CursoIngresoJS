@@ -4,305 +4,232 @@ e informar la suma acumulada y el promedio.
 */
 function mostrar()
 {
-	var contador;
-	var suma;
-	var numero;
-	var promedio;
-	var respuesta;
 
-	suma = 0;
-	contador = 0;
+	//EJERCICIO 26-02
+
+	//VARIABLES DE INGRESO DE DATOS
+	var alturaEnCm;
+	var edad;
+	var temperaturaCorporal;
+	var sexo;
+	var nota;
+	var nombre;
+	var respuestaSalida;
+	
+	//VRAIABLES BANDERAS
+	var flagIngreso;
+	var flagAlumnoAprobado;
+	var flagMaxTemperatura;
+	var flagNbMasJoven;
+	var flagPrimerHombreDesaprobadoYMenos160Cm;
+
+	//VARIABLES CONTADOR Y ACUMULADORES
+	var contadorMujeres;
+	var contadorHombres;
+	var contadorNb;
+	var contadorPersonasConFiebre;
+	var contadorPersonasSinFiebre;
+	var sumaEdadMujeres;
+	var sumaEdadHombres;
+	var sumaEdadNb;
+	var contadorPersonas;
+	var contadorPersonasDesaprobadas;
+
+	//VARIABLES DE FORMULAS
+	var promedioEdadMujeres;
+	var promedioEdadHombres;
+	var promedioEdadNb;
+
+	//VARIABLES RESPUESTA
+	var respuestaParteUno;
+	var respuestaParteDos;
+	var respuestaParteTres;
+
+	//OTRAS VARIABLES
+	var maximaTemperatura;
+	var nombreMaximaTemperatura;
+	var edadMaximaTemperatura;
+	var minEdadNb;
+	var alturaNbMasJoven;
+	var notaNbMasJoven;
+	var maxAlturaMujerAprobada;
+	var nombreMujerAprobadaMasAlta;
+	var porcentajeDePersonasDesaprobadas;
+	var nombrePrimerHombreDesaprobadoYMenos160Cm;
+
+	//DEFINICION DE BANDERAS
+	flagIngreso = true;
+	flagAlumnoAprobado = true;
+	flagMaxTemperatura = true;
+	flagNbMasJoven = true;
+	flagMujerMasAltaAprobada = true;
+	flagPrimerHombreDesaprobadoYMenos160Cm = true;
+
+	//DEFINICION CONTADORES Y ACUMULADORES
+	contadorMujeres = 0;
+	contadorHombres = 0;
+	contadorNb = 0;
+	contadorPersonasConFiebre = 0;
+	contadorPersonasSinFiebre = 0;
+	sumaEdadHombres = 0;
+	sumaEdadMujeres = 0;
+	sumaEdadNb = 0;
+	contadorPersonas = 0;
+	contadorPersonasDesaprobadas = 0;
 
 	do
 	{
-		numero = parseInt(prompt("Ingrese un Número"));
-		suma = suma + numero;
-		respuesta = prompt("Desea salir?, responda Salir");
-		contador++;
-	}while(respuesta != "Salir");
-
-	document.getElementById("txtIdSuma").value = suma;
-	promedio = (suma / contador).toFixed(0);
-	document.getElementById("txtIdPromedio").value = promedio;
-
-
-
-
-
-
-
-	// EJERCICIO SABADO 19-02 
-	/*
-	var alturaEnCm;
-	var edad;
-	var temperatura;
-	var sexo;
-	var nota;
-	var nombreAlumno;
-	var mensaje;
-	var contadorIteraciones;
-	var sumaAlturas;
-	var promedioAltura;
-	var contadorSexoF;
-	var contadorSexoM;
-	var contadorSexoNb;
-	var contadorNotaAprobados;
-	var contadorMujeresAltura;
-	var nombreDeLaPersonaMasAlta;
-	var alturaMaxima;
-	var primerPersonaConFiebre;
-	var edadPrimeraPersonaConFiebre;
-	var primerMujerAprobada;
-	var nombreDeLaPrimerMujerAprobada;
-	var sumaAlturasAprobados;
-	var primerHombreMenorDesaprobado;
-	var nombrePrimerHombreMenorDesaprobado;
-	var primerHombreMasAltoDe200cm;
-	var nombrePrimerHombreMasAltoDe200cm;
-	var notaPrimerHombreMasAltoDe200cm;
-	var contadorPersonasConFiebre;
-	var contadorPersonasConFiebreMayorA50;
-
-	//CONTADORES
-	contadorIteraciones = 0;
-	sumaAlturas = 0;
-	contadorSexoF = 0;
-	contadorSexoM = 0;
-	contadorSexoNb = 0;
-	contadorNotaAprobados = 0;
-	contadorMujeresAltura = 0;
-	sumaAlturasAprobados = 0;
-	contadorPersonasConFiebre = 0;
-	contadorPersonasConFiebreMayorA50 = 0;
-
-	//OTRAS VARIABLES
-	alturaMaxima = 0;
-	primerPersonaConFiebre = true;
-	primerMujerAprobada = true;
-	primerHombreMenorDesaprobado = true;
-	primerHombreMasAltoDe200cm = true;
-
-	while(contadorIteraciones < 5)
-	{
-		contadorIteraciones++;
-
-		//PIDO ALTURA Y VALIDO QUE SEA ENTRE 0 Y 250
-		alturaEnCm = parseInt(prompt(contadorIteraciones + " - Ingrese una altura en cm"));
+		//INGRESO LA ALTURA Y VALIDO
+		alturaEnCm = parseInt(prompt("Ingrese la altura en cm"));
 		while(alturaEnCm < 0 || alturaEnCm > 250)
 		{
-			mensaje = contadorIteraciones + " - Ingrese una altura entre 0 y 250";
-			alturaEnCm = parseInt(prompt(mensaje));
+			alturaEnCm = parseInt(prompt("La altura debe estar entre 0 y 250"));
 		}
 
-		//PIDO EDAD Y VALIDO QUE SEA MAYOR A 0
-		edad = parseInt(prompt(contadorIteraciones + " - Ingrese la edad"));
-		while(edad < 17)
+		//INGRESO LA EDAD Y VALIDO
+		edad = parseInt(prompt("Ingrese la edad"));
+		while(edad < 18 || edad > 80)
 		{
-			mensaje = contadorIteraciones + " - Ingrese una edad mayor a 17";
-			edad = parseInt(prompt(mensaje));
+			edad = parseInt(prompt("La edad debe estar entre los 18 y los 80 años"));	
 		}
 
-		//PIDO TEMPERATURA Y VALIDO QUE SEA ENTRE 35 Y 45
-		temperatura = parseInt(prompt(contadorIteraciones + " - Ingrese una temperatura"));
-		while(temperatura < 35 || temperatura > 45)
+		//INGRESO LA TEMPERATURA Y VALIDO
+		temperaturaCorporal = parseInt(prompt("Ingrese la temperatura corporal"));
+		while(temperaturaCorporal < 35 || temperaturaCorporal > 45)
 		{
-			mensaje = contadorIteraciones + " - La temperatura debe ser entre 35 y 45";
-			temperatura = parseInt(prompt(mensaje));
+			temperaturaCorporal = parseInt(prompt("La temperatura debe estar entre los 35 y 45°"));	
 		}
-
-		//PIDO SEXO Y VALIDO QUE SEA SOLO F, M O NB
-		sexo = prompt(contadorIteraciones + " - Ingrese el sexo f, m o nb").toLowerCase();
-		while(sexo != "f" && sexo != "m" && sexo !="nb")
+		//CONTABILIZO PERSONAS CON FIEBRE b)
+		if(temperaturaCorporal > 37)
 		{
-			mensaje = contadorIteraciones + " - Ingrese solo f, m o nb para el sexo";
-			sexo = prompt(mensaje).toLocaleLowerCase();
+			contadorPersonasConFiebre++;
+		}
+		//CONTABILIZO PERSONAS SIN FIEBRE b)
+		else
+		{
+			contadorPersonasSinFiebre++;
 		}
 
-		//CONTABILIZO CANTIDAD DE F, M, NB
+
+		//INGRESO EL SEXO Y VALIDO
+		sexo = prompt("Ingrese el sexo con f, m o nb").toLowerCase();
+		while(sexo != "m" && sexo != "f" && sexo != "nb")
+		{
+			sexo = prompt("El sexo debe ser f, m o nb");	
+		}
+
+		//INGRESO LA NOTA Y VALIDO
+		nota = parseInt(prompt("Ingrese la nota"));
+		while(nota > 10 || nota < 1)
+		{
+			nota = parseInt(prompt("Ingrese una nota del 1 al 10"));	
+		}
+		//PERSONAS QUE DESAPROBARON
+		if(nota < 7)
+		{
+			contadorPersonasDesaprobadas++;
+		}
+		else
+		{
+			//1ER ALUMNO APROBADO
+			if(flagAlumnoAprobado == true)
+			{
+				PrimerAlumnoAprobado = nombre;
+				flagAlumnoAprobado = false;
+			}
+		}
+
+		//INGRESO EL NOMBRE DE LA PERSONA
+		nombre = prompt("Ingrese el nombre");
+
+		//CONTABILIZO PERSONAS POR SEXO Y ACUMULO LAS EDADES:
 		switch(sexo)
 		{
 			case "f":
-				contadorSexoF++;
+				contadorMujeres++;
+				sumaEdadMujeres += edad;
+				//MUJER APROBADA MAS ALTA
+				if(nota > 6)
+				{
+					if(alturaEnCm > maxAlturaMujerAprobada || flagMujerMasAltaAprobada ==true)
+					{
+						maxAlturaMujerAprobada = alturaEnCm;
+						nombreMujerAprobadaMasAlta = nombre;
+						flagMujerMasAltaAprobada = false;
+					}
+				}
+				else
+				{
+					nombreMujerAprobadaMasAlta = "Ninguna Mujer esta desaprobada";
+				}
 				break;
 			case "m":
-				contadorSexoM++;
+				contadorHombres++;
+				sumaEdadHombres += edad;
+				if(alturaEnCm < 160 && nota < 7)
+				{
+					if(flagPrimerHombreDesaprobadoYMenos160Cm == true)
+					{
+						nombrePrimerHombreDesaprobadoYMenos160Cm = nombre;
+						flagPrimerHombreDesaprobadoYMenos160Cm = false;
+					}
+				}
+				else
+				{
+					nombrePrimerHombreDesaprobadoYMenos160Cm = "No hay hombres Desaprobados que miden menos de 160cm"
+				}
 				break;
 			case "nb":
-				contadorSexoNb++;
+				contadorNb++;
+				sumaEdadNb += edad;
+				//SACO ALTURA Y NOTA DEL NB MAS JOVEN
+				if(edad < minEdadNb || flagNbMasJoven ==true)
+				{
+					minEdadNb = edad;
+					alturaNbMasJoven = alturaEnCm;
+					notaNbMasJoven = nota;
+					flagNbMasJoven = false;
+				}
 				break;
-		}
-
-		//CONTABILIZO CANTIDAD DE MUJERES CON ALTURA MAYOR A 190
-		if(sexo == "f" && alturaEnCm >190)
+		}	
+		//MAXIMA TEMPERATURA, NOMBRE Y EDAD
+		if(temperaturaCorporal > maximaTemperatura || flagMaxTemperatura == true)
 		{
-			contadorMujeresAltura++;
+			maximaTemperatura = temperaturaCorporal;
+			nombreMaximaTemperatura = nombre;
+			edadMaximaTemperatura = edad;
+			flagMaxTemperatura = false;
 		}
 
-
-		//PIDO LA NOTA Y VALIDO QUE ESTE ENTRE 1 Y 10
-		nota = parseInt(prompt(contadorIteraciones + " - Ingrese la nota obtenida"));
-		while(nota < 1 || nota > 10)
+		//BANDERA DE SALIDA
+		respuestaSalida = prompt("Desea salir?: Marque s").toLowerCase();
+		if(respuestaSalida == "s")
 		{
-			mensaje = contadorIteraciones + " - Ingrese un nro entre 1 y 10";
-			nota = parseInt(prompt(mensaje));
+			flagIngreso = false;
 		}
 
-		//PIDO NOMBRE DEL ALUMNO
-		nombreAlumno = prompt(contadorIteraciones + " - Ingrese el nombre").toString();
-		while(nombreAlumno == "")
-		{
-			mensaje = " - Ingrese un nombre correcto";
-			nombreAlumno = prompt(contadorIteraciones + mensaje).toString();
-		}
+		contadorPersonas++;
 
-		//CONTABILIZO CANTIDAD DE APROBADOS
-		if(nota > 6)
-		{
-			contadorNotaAprobados++;
-			// NOMBRE DE LA 1ER MUJER APROBADA
-			if(sexo == "f" && primerMujerAprobada == true)
-			{
-				nombreDeLaPrimerMujerAprobada = nombreAlumno;
-				primerMujerAprobada = false;
-			}
-			//SUMA DE ALTURAS DE APROBADOS
-			sumaAlturasAprobados = sumaAlturasAprobados + alturaEnCm;
-		}
-		else
-		{
-			//BUSCO EL NOMBRE DEL 1ER HOMBRE DESAPROBADO Y QUE MIDE MENOS DE 160CM
-			if(sexo == "m" && primerHombreMenorDesaprobado == true && alturaEnCm < 160)
-			{
-				nombrePrimerHombreMenorDesaprobado = nombreAlumno;
-				primerHombreMenorDesaprobado = false;
-			}
-		}
+	}while(flagIngreso == true);
 
-		// OBTENGO EL NOMBRE Y LA NOTA DEL HOMBRE MÁS ALTO DE 200
-		if(sexo == "m" && alturaEnCm > 200)
-		{
-			if(primerHombreMasAltoDe200cm == true)
-			{
-				nombrePrimerHombreMasAltoDe200cm = nombreAlumno;
-				notaPrimerHombreMasAltoDe200cm = nota;
-				primerHombreMasAltoDe200cm = false;
-			}
-		}
+	//PROMEDIOS DE EDAD POR SEXO
+	promedioEdadHombres = (sumaEdadHombres / contadorHombres).toFixed(2);
+	promedioEdadMujeres = (sumaEdadMujeres / contadorMujeres).toFixed(2);
+	promedioEdadNb = (sumaEdadNb / contadorNb).toFixed(2);
 
-		//SUMO LAS ALTURAS
-		sumaAlturas = sumaAlturas + alturaEnCm;
+	//PORCENTAJE PERSONAS DESAPROBADAS SOBRE EL TOTAL
+	porcentajeDePersonasDesaprobadas = (contadorPersonasDesaprobadas / contadorPersonas * 100).toFixed(0)+"%";
 
-		//NOMBRE DE LA PERSONA MÁS ALTA
-		if (alturaEnCm > alturaMaxima)
-		{
-			alturaMaxima = alturaEnCm;
-			nombreDeLaPersonaMasAlta = nombreAlumno;
-		}
-		
-		if(temperatura > 37)
-		{
-			//CONTABILIZO CUANTAS PERSONAS HAY CON FIEBRE
-			contadorPersonasConFiebre++;
+	//PARTE 1
+	respuestaParteUno = "Hay " + contadorMujeres + " mujeres \nHay " + contadorPersonasConFiebre + " personas con fiebre \nHay " + contadorPersonasSinFiebre + " personas sin fiebre \nPromedio edad Hombres: " + promedioEdadHombres + "\nPromedio Edad Mujeres: " + promedioEdadMujeres + "\nPromedio Edad No Binarios: " + promedioEdadNb;
 
-			//EDAD DE LA 1ER PERSONA CON FIEBRE
-			if(primerPersonaConFiebre == true)
-			{
-				edadPrimeraPersonaConFiebre = edad;
-				primerPersonaConFiebre = false;
-			}
+	//PARTE 2
+	respuestaParteDos = "El primer alumno aprobado es: "+PrimerAlumnoAprobado + "\nLa persona con mayor temperatura es: " + nombreMaximaTemperatura + " y tiene " + maximaTemperatura + "°\nLa altura del NB más joven es: " + alturaNbMasJoven + " y su nota es "+ notaNbMasJoven;
 
-			if(edad > 50)
-			{
-				contadorPersonasConFiebreMayorA50++;
-			}
+	//PARTE 3
+	respuestaParteTres = "El nombre de la mujer más alta que desaprobó es: " + nombreMujerAprobadaMasAlta + "\nEl porcentaje de las personas desaprobadas sobre el total es: " + porcentajeDePersonasDesaprobadas + "\nEl nombre del primer hombre, que mide menos de 160 cm y  está  desaprobado: " + nombrePrimerHombreDesaprobadoYMenos160Cm;
 
-		}
+	alert(respuestaParteUno + "\n" + respuestaParteDos + "\n" + respuestaParteTres);
 
-
-	}
-
-	//1RA PARTE
-
-	promedioAltura = (sumaAlturas / contadorIteraciones).toFixed(2);
-	alert("El promedio de las alturas es " + promedioAltura); //a)
-	alert("Hay " + contadorSexoF + " F, " + contadorSexoM + " M, " + contadorSexoNb + " NB."); //b)
-	alert("Hay " + contadorNotaAprobados + " aprobados."); //c)
-	alert("Hay " + contadorMujeresAltura + " muejeres que superan los 190 cm"); //d)
-
-	//2DA PARTE
-
-	// e) Genero con más alumnos
-	if(contadorSexoF > contadorSexoM && contadorSexoF > contadorSexoNb)
-	{
-		mensaje = "El sexo femenino tiene más alumnos";
-	}
-	else
-	{
-		if(contadorSexoM > contadorSexoNb)
-		{
-			mensaje = "El sexo masculino tiene más alumnos";
-		}
-		else
-		{
-			mensaje = "El sexo no binario tiene más alumnos";
-		}
-	}
-	alert(mensaje);
-
-	// f) El nombre de la persona más alta
-	alert("El nombre de la persona más alta es "+ nombreDeLaPersonaMasAlta);
-
-	//g) Edad de la 1er persona con fiebre
-	alert("La edad de la 1er persona con fiebre es: " + edadPrimeraPersonaConFiebre);
-
-
-	//3RA PARTE
-
-	//h) Nombre de la 1er mujer aprobada
-	alert("La primer mujer aprobada es: " + nombreDeLaPrimerMujerAprobada);
-
-	//i) Altura promedio de los aprobados
-	alert("El promedio de altura de aprobados es: " + (sumaAlturasAprobados/contadorNotaAprobados).toFixed(2));
-
-	//j) Nombre del 1er hombre, que mide menos de 160 cm y está desaprobado.
-	alert("El nombre del 1er hombre desaprobado menor a 160 cm es: " + nombrePrimerHombreMenorDesaprobado);
-
-
-	//4TA PARTE
-
-	//k) El porcentaje de alumnos aprobados sobre el total de alumnos
-	alert("El porcentaje de alumnos aprobados sobre el total es : " + (contadorNotaAprobados / contadorIteraciones * 100).toFixed(0) + "%");
-	
-	//l) La nota y el nombre del primer varon más alto de 200cm
-	alert("El nombre del hombre más alto de 200 cm es: " + nombrePrimerHombreMenorDesaprobado + " y su nota es: " + notaPrimerHombreMasAltoDe200cm);
-
-	//m) Porcentahe de personas con fiebre mayores a 50 años sobre el total de personas con fiebre y sobre el total de alumnos
-	alert("Hay un " + (contadorPersonasConFiebreMayorA50 / contadorPersonasConFiebre *100).toFixed(0) + "% de personas con fiebre mayores a 50 años sobre la cantidad de personas con fiebre y un " + (contadorPersonasConFiebreMayorA50 / contadorIteraciones *100).toFixed(0) + "% sobre el total de alumnos");
-
-
-*/
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-}//FIN DE LA FUNCIÓN
+}
+//FIN DE LA FUNCIÓN

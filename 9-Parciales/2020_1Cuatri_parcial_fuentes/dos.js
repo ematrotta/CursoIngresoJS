@@ -137,8 +137,7 @@ function mostrar()
   }
 
 
-  alert("El importe bruto a pagar es: $" + importeBruto + "/n El importe con descuento es: $" + subtotalConDescuento + 
-  "/n El tipo con más cantidad de bolsas es " + tipoCantidadMaxima + "/n El tipo más caro es " + tipoPrecioMaximo);
+  alert("El importe bruto a pagar es: $" + importeBruto + "\n El importe con descuento es: $" + subtotalConDescuento + "\n El tipo con más cantidad de bolsas es " + tipoCantidadMaxima + "\n El tipo más caro es " + tipoPrecioMaximo);
 
 }
 

@@ -9,7 +9,29 @@ F.	Nacionalidad, “A” para argentinos, “E” para extranjeros, “N” para
  */
 function ComenzarIngreso () 
 {
+	//EJERCICIO APLICADO FOR
+	var edad;
+	var sexo;
+	var estadoCivil;
+	var sueldoBruto;
+	var numeroLegajo;
+	var nacionalidad;
+	var i;
+	var contador;
 
+	i = 0;
+
+	edad = parseInt(prompt("Ingrese su edad"));
+	for (i ; edad < 18 || edad > 90 ; i++)
+	{
+
+		edad = parseInt(prompt("La edad debe estar entre 18 y 90"));
+
+	}
+
+
+
+	/*
 	//EJERCICIO APLICADO WHILE
 	var edad;
 	var sexo;
@@ -101,7 +123,7 @@ function ComenzarIngreso ()
 	}
 	document.getElementById("txtIdNacionalidad").value = nacionalidad;
 
-
+	*/
 
 
 
