@@ -1,143 +1,141 @@
 function mostrar()
 {
-  var flagIngreso;
 
-  var siguienteIngreso;
-  var tipoMaterial;
-  var cantidadBolsas;
-  var precioBolsaArena;
-  var precioBolsaCal;
-  var precioBolsaCemento;
-  var descuento;
+    var flagIngreso;
 
-  var contadorCantidadBolsasArena;
-  var contadorCantidadBolsasCal;
-  var contadorCantidadBolsasCemento;
-  var contadorBolsasTotal;
+    var respuestaSalida;
+    var producto;
+    var cantidadBolsas;
 
-  var subtotalConDescuento;
+    var precioBolsaArena;
+    var precioBolsaCal;
+    var precioBolsaCemento;
 
-  var tipoCantidadMaxima;
-  var tipoPrecioMaximo;
+    var contadorBolsasArena;
+    var contadorBolsasCal;
+    var contadorBolsasCemento;
 
-  flagIngreso = true;
+    var cantidadBolsasTotal;
+    var descuento;
+    var importeBrutoSinDescuento;
+    var importeConDescuento;
+    var tipoConMasCantidades;
+    var tipoMasCaro;
+
+    flagIngreso = true;
+
+    precioBolsaArena = 35;
+    precioBolsaCal = 45;
+    precioBolsaCemento = 40;
+
+    contadorBolsasArena = 0;
+    contadorBolsasCal = 0;
+    contadorBolsasCemento = 0;
 
 
-  precioBolsaArena = 35;
-  precioBolsaCal = 70;
-  precioBolsaCemento = 50;
-  
-  contadorCantidadBolsasArena = 0;
-  contadorCantidadBolsasCal = 0;
-  contadorCantidadBolsasCemento = 0;
-
-
-
-  do
-  {
-    //PIDO TIPO DE MATERIAL Y VALIDO
-    tipoMaterial = prompt("Ingrese el tipo de material: arena, cal o cemento").toLowerCase();
-    while(tipoMaterial != "arena" && tipoMaterial != "cal" && tipoMaterial !="cemento")
+    do
     {
-      tipoMaterial = prompt("Ingrese solo arena, cal o cemento").toLowerCase();
+        producto = prompt("Ingrese un tipo de producto").toLowerCase();
+        while(producto != "arena" && producto != "cal" && producto != "cemento")
+        {
+            producto = prompt("El producto debe ser arena, cal o cemento").toLowerCase();
+        }
+
+        cantidadBolsas = parseInt(prompt("Ingrese la cantidad de bolsas"));
+        while(cantidadBolsas < 1)
+        {
+            cantidadBolsas = parseInt(prompt("La cantidad de bolsas debe ser mayor que 0"));
+        }
+
+        switch(producto)
+        {
+            case "arena":
+                contadorBolsasArena += cantidadBolsas;
+                break;
+            case "cal":
+                contadorBolsasCal += cantidadBolsas;
+                break;
+            case "cemento":
+                contadorBolsasCemento += cantidadBolsas;
+                break;
+
+        }
+
+        //SALIDA DEL BUCLE
+        respuestaSalida = prompt("Desea Salir?: Coloque s").toLowerCase();
+        if(respuestaSalida == "s")
+        {
+            flagIngreso = false;
+        }
+
+    }while(flagIngreso == true);
+
+    cantidadBolsasTotal = contadorBolsasArena + contadorBolsasCal + contadorBolsasCemento;
+
+    //TOTAL DEL DESCUENTO
+    if(cantidadBolsasTotal > 30)
+    {
+        descuento = 25;
+    }
+    else
+    {
+        if(cantidadBolsas > 10)
+        {
+            descuento = 15;
+        }
+        else
+        {
+            descuento = 0;
+        }
     }
 
-    //PIDO CANTIDAD DE BOLSAS Y VALIDO
-    cantidadBolsas = parseInt(prompt("Ingrese la cantidad de bolsas"));
-    while(cantidadBolsas < 1)
+    //SUBTOTAL
+
+    importeBrutoSinDescuento = contadorBolsasArena * precioBolsaArena + contadorBolsasCal * precioBolsaCal + contadorBolsasCemento * precioBolsaCemento;
+
+    if(descuento > 0)
     {
-      cantidadBolsas = parseInt(prompt("La cantidad de bolsas debe ser mayor que 0"));
+        importeConDescuento = (importeBrutoSinDescuento - (importeBrutoSinDescuento * descuento/100)).toFixed(2);
+        importeConDescuento = "El importe con descuento a pagar es: " + importeConDescuento;
     }
 
-    switch(tipoMaterial)
+    if(contadorBolsasArena > contadorBolsasCal && contadorBolsasArena > contadorBolsasCemento)
     {
-      case "arena":
-        contadorCantidadBolsasArena += cantidadBolsas;
-        break;
-      case "cemento":
-        contadorCantidadBolsasCemento += cantidadBolsas;
-        break;
-      case "cal":
-        contadorCantidadBolsasCal += cantidadBolsas;
-        break;
+        tipoConMasCantidades = "El tipo con más cantidades es la arena."
+    }
+    else
+    {
+        if(contadorBolsasCal > contadorBolsasCemento)
+        {
+            tipoConMasCantidades = "El tipo con más cantidades es la cal."
+        }
+        else
+        {
+            tipoConMasCantidades = "El tipo con más cantidades es el cemento."
+        }
+      
     }
 
-    //BANDERA
-		siguienteIngreso = prompt("Deses seguir el ingreso: coloque n para NO").toLowerCase();
-		if(siguienteIngreso == "n")
-		{
-			flagIngreso = false;
-		}
-
-  }while(flagIngreso == true);
-
-
-  //CONTABILIZO LA CANTIDAD DE BOLSAS TOTALES
-  contadorBolsasTotal = contadorCantidadBolsasArena + contadorCantidadBolsasCal + contadorCantidadBolsasCemento;
-
-  //DESCUENTO POR CANTIDAD DE BOLSAS
-  switch(contadorBolsasTotal)
-  {
-    case contadorBolsasTotal > 10:
-      descuento = 15;
-      break;
-    case contadorBolsasTotal > 30:
-      descuento = 25;
-      break;
-    default:
-      descuento = 0;
-      break;
-  }
-
-  //IMPORTE BRUTO A PAGAR SIN DESCUENTO
-  importeBruto = contadorCantidadBolsasArena * precioBolsaArena + contadorCantidadBolsasCal * precioBolsaArena + contadorCantidadBolsasCemento * precioBolsaCemento;
-
-  if(descuento > 0)
-  {
-    subtotalConDescuento = importeBruto - (importeBruto * descuento /100);
-  }
-  else
-  {
-    subtotalConDescuento = importeBruto;
-  }
-
-  //CANTIDAD MAXIMA SEGUN TIPO
-  if(contadorCantidadBolsasArena > contadorCantidadBolsasCal && contadorCantidadBolsasArena > contadorCantidadBolsasCemento)
-  {
-    tipoCantidadMaxima = "arena";
+    if(precioBolsaArena > precioBolsaCal && precioBolsaArena > precioBolsaCemento)
+    {
+        tipoMasCaro = "El tipo más caro es la arena";
+    }
+    else
+    {
+        if(precioBolsaCal > precioBolsaCemento)
+        {
+            tipoMasCaro = "El tipo más caro es la Cal";
+        }
+        else
+        {
+            tipoMasCaro = "El tipo más caro es el cemento";
+        }
     
-  }
-  else
-  {
-    if(contadorCantidadBolsasCal > contadorCantidadBolsasCemento)
-    {
-      tipoCantidadMaxima = "cal";
     }
-    else
-    {
-      tipoCantidadMaxima = "cemento";
-    }
-  }
 
-  //TIPO MÁS CARO
-  if(precioBolsaArena > precioBolsaCal && precioBolsaArena > precioBolsaCemento)
-  {
-    tipoPrecioMaximo = "Arena";
-  }
-  else
-  {
-    if(precioBolsaCal > precioBolsaCemento)
-    {
-      tipoPrecioMaximo = "Cal";
-    }
-    else
-    {
-      tipoPrecioMaximo = "Cemento";
-    }
-  }
+    document.write("El importe bruto a pagar sin descuento es: " + importeBrutoSinDescuento + "<br>" + importeConDescuento + "<br>" + tipoConMasCantidades + "<br>" + tipoMasCaro);
 
-
-  alert("El importe bruto a pagar es: $" + importeBruto + "\n El importe con descuento es: $" + subtotalConDescuento + "\n El tipo con más cantidad de bolsas es " + tipoCantidadMaxima + "\n El tipo más caro es " + tipoPrecioMaximo);
+  
 
 }
 
